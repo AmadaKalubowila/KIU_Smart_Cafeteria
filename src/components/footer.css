@@ -1,0 +1,26 @@
+.Box2{
+    background-color: rgb(249, 124, 174);
+    margin-top: 3%;
+    height: auto;   
+    width:100%; 
+    box-sizing: border-box; /* Ensures padding and border are included in the width and height */
+    padding: 20px;
+}
+.structure2{
+    width:100%;
+    box-sizing: border-box; 
+
+}
+.list1{
+    margin-left:68%;
+}
+.name1{
+    margin-left:40%;
+}
+@media (max-width: 600px) {
+    .list1, .name1 {
+        margin-left: 0; 
+        margin-right: 0; 
+        text-align: center; 
+    }
+}

@@ -1,0 +1,76 @@
+.Structure{
+    width:90%;
+    max-width: 600px;
+    height:auto;
+    padding:20px;
+    margin: 80px auto 0 auto; 
+    box-sizing: border-box;
+    
+   
+}
+
+.label_structure{
+    padding:10px;
+    font-size:large;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 100;
+    margin-right: 50px;
+}
+.field_structure{
+    padding:7px;
+    border:6px;
+    width:150px;
+    height:30px;
+    border-radius: 10px;
+    margin-left: 50px;
+}
+.Box1{
+    background-color: rgb(254, 161, 198);
+    margin: 3% auto; 
+    width: 90%; 
+    max-width: 1300px; 
+    padding: 20px; 
+    border-radius: 3%;
+    box-sizing: border-box;
+}
+.heading{
+    text-align: center;
+    padding-top: 4.5%;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+.button1{
+    display: block;
+    margin: 20px auto; 
+    width: 50%;
+    max-width: 350px; 
+    height: auto;
+    padding: 10px;
+    border-radius: 5%;
+    background-color: black;
+    color: azure;
+    border: none;
+    font-weight: bold; 
+    text-align: center;
+}
+.button1:hover{
+    background-color : rgb(9, 30, 190); 
+}
+.button1:active{
+    background-color: rgb(69, 165, 42);
+}
+@media (max-width: 600px) {
+    .Structure {
+        width: 100%; 
+        margin: 20px auto;
+    }
+
+    .Box1 {
+        width: 95%; 
+        margin: 10px auto; 
+    }
+
+    .button1 {
+        width: 70%; 
+    }
+}
