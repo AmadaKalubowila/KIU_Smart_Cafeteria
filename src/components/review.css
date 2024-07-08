@@ -1,0 +1,134 @@
+.Structure_r{
+    width:90%;
+    max-width: 600px;
+    height:auto;
+    padding:20px;
+    margin: 80px auto 0 auto; 
+    box-sizing: border-box;
+    
+   
+}
+
+.label_structure_r{
+    padding:10px;
+    font-size:large;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 100;
+    margin-right: 50px;
+}
+.field_structure_r{
+    padding:7px;
+    border:6px;
+    width:150px;
+    height:30px;
+    border-radius: 10px;
+    margin-left: 50px;
+}
+.Box1_r{
+    background-color: rgb(254, 161, 198);
+    margin: 3% auto; 
+    width: 90%; 
+    max-width: 1300px; 
+    padding: 20px; 
+    border-radius: 3%;
+    box-sizing: border-box;
+   padding-bottom: 84px;
+    
+}
+.heading_r{
+    text-align: center;
+    padding-top: 4.5%;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+.button1_r{
+    display: block;
+    margin-top: 20px ; 
+    margin-left: 82%;
+    width: 10%;
+    max-width: 350px; 
+    height: auto;
+    padding: 10px;
+    border-radius: 5%;
+    background-color: black;
+    color: azure;
+    border: none;
+    font-weight: bold; 
+    text-align: center;
+    
+}
+.button1_r:hover{
+    background-color : rgb(9, 30, 190); 
+}
+.button1_r:active{
+    background-color: rgb(69, 165, 42);
+}
+@media (max-width: 600px) {
+    .Structure_r{
+        width: 100%; 
+        margin: 20px auto;
+    }
+
+    .Box1_r {
+        width: 95%; 
+        margin: 10px auto; 
+    }
+
+    .button1_r {
+        width: 70%; 
+    }
+}
+.review-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+    padding: 20px;
+    margin-left: 71px;
+  }
+.Box2_r{
+    background-color: rgb(204, 201, 202);
+    margin: 3% auto; 
+    width: 50%; 
+    height:300px;
+    margin-left:10%;
+    padding: 20px; 
+    margin-left: 13px;
+    border-radius: 3%;
+    box-sizing: border-box;
+   padding-bottom: 25px;
+   min-width: 350px; 
+    
+}
+.heading2_r{
+    font-weight: 700;
+    text-align: center;
+}
+.button3_r{
+    width:85px;
+    height:50px;
+    font-weight: 600;
+    background-color: rgb(37, 180, 132);
+    border-radius: 5px;
+    
+}
+.button4_r{
+    width:85px;
+    height:50px;
+    font-weight: 600;
+    background-color: rgb(229, 87, 87);
+    border-radius: 5px;
+    
+}
+.set1{
+    margin-top:30px;
+    margin-left: 45%;
+}
+.content1{
+    margin-left: 67px;
+}
+.content2{
+    margin-left: 67px;
+    background-color: rgb(142, 139, 139);
+    padding: 10px;
+    
+}

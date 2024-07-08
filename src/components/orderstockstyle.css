@@ -1,0 +1,54 @@
+.heading_1{
+    text-align: center;
+    font-size: xx-large;
+    font-weight: 700;
+    margin-top: 5%;
+}
+.heading_2{
+    text-align: left;
+    font-size: x-large;
+    font-weight: 600;
+    margin-left: 10%;
+    
+}
+.Tablestructure{
+    width:80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.th_1{
+    width:8%;
+}
+.Box_1{
+ background-color: hwb(0 72% 25%);
+  margin:auto;
+  width: 90%;
+  max-width: 1300px;
+  padding: 20px;
+  border-radius: 3%;
+  box-sizing: border-box;
+}
+.heading_3{
+    text-align: left;
+    margin-left: 20%;
+}
+.list1{
+    margin-left: 25%;
+}
+.Input1{
+    margin-left: 7%;
+    background-color:  hwb(0 72% 25%);
+    
+}
+.Input2{
+    margin-left: 14%;
+    background-color:  hwb(0 72% 25%);
+}
+.Input3{
+    margin-left: 4%;
+    background-color:  hwb(0 72% 25%);
+}
+.Input4{
+    margin-left: 15%;
+    background-color:  hwb(0 72% 25%);
+}
