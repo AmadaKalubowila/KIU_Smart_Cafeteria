@@ -1,10 +1,12 @@
 import React from 'react';
-import AppVenderadd from '../components/Venderadd';
+import AppVendorView from '../components/VendorView';
+import AppNav from '../components/Nav';
 
-export default function vendor() {
+export default function Vendor() {
   return (
     <div>
-        < AppVenderadd></ AppVenderadd>
+      <AppNav></AppNav>
+        < AppVendorView></AppVendorView>
        
         
         </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function NavigationComponent() {
+ function Adminhome() {
   const navigate = useNavigate();
   const userID = 1; 
   const handleOrderClick = () => {
@@ -15,4 +15,4 @@ export default function NavigationComponent() {
       </button>
     </div>
   );
-}
+}export default Adminhome;

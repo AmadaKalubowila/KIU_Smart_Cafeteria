@@ -9,12 +9,12 @@ class ReviewService {
         return axios.get(`${API_URL}/getReviewByReviewID/${reviewID}`);
     }
 
-    updateReview(ordersID, orderingData) {
-        return axios.put(`${API_URL}/updateOrderByOrderID/${ordersID}`, orderingData);
+    updateReview(reviewID,reviewData) {
+        return axios.put(`${API_URL}/updateReviewByReviewID/${reviewID}`,reviewData);
     }
 
-    deleteReviewById(id) {
-        return axios.delete(`${API_URL}/deleteReviewByReviewID/${id}`);
+    deleteReviewById(reviewID) {
+        return axios.delete(`${API_URL}/deleteReviewByReviewID/${reviewID}`);
     }
 }
 

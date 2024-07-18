@@ -90,7 +90,7 @@ function Review() {
           </table>
         </form>
       </div>
-      <button  onClick={handleSubmit} className="button1_r" type="submit">
+      <button  onClick={handleSubmit} className="buttonr1" type="submit">
         Submit
       </button>
     </div>

@@ -132,3 +132,17 @@
     padding: 10px;
     
 }
+.buttonr1{
+    display: block;
+    margin: 20px auto; 
+    width: 50%;
+    max-width: 350px; 
+    height: auto;
+    padding: 10px;
+    border-radius: 5%;
+    background-color: black;
+    color: azure;
+    border: none;
+    font-weight: bold; 
+    text-align: center;
+}

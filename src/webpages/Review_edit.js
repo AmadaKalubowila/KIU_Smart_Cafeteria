@@ -3,7 +3,7 @@ import AppReviewEdit from '../components/ReviewEdit';
 import Appfooter from '../components/footer';
 
 
-export default function edit_onlineorder() {
+export default function Review_edit() {
   return (
     <div>
         <AppReviewEdit></AppReviewEdit>

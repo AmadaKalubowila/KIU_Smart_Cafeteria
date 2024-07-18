@@ -33,36 +33,39 @@ export default function NavigationComponent() {
  
 
   const handleEditClick = (review) => {
-    console.log(review)
-    if (userID === review.indexNo) {
-      const reviewID= review.id
-      console.log(reviewID)
-      navigate(`/Review_edit/{reviewID}`);
+    
+    if (userID == review.indexNo) {  
+      const reviewID = review.id
+      navigate(`/Review_edit/${reviewID}`);
     } else {
       alert("You can only edit your own reviews.");
     }
   };
 
   const handleDeleteClick = (review) => {
-    
-    if (userID !== review.indexNo) {
+    const reviewID = review.id
+    if (userID == review.indexNo) {
+      const confirmed = window.confirm("Do you want to delete?");
+      if (confirmed) {
+          ReviewService.deleteReviewById(reviewID)
+              .then(() => {
+                  console.log("Review deleted");
+                  navigate('/Reviewuser'); 
+              })
+              .catch((error) => {
+                  console.error('There was an error deleting the review!', error);
+              });
+      } else {
+          console.log("Order not deleted");
+      }}
+      else{
       alert("You can only delete your own reviews.");
+      console.log("error")
       return;
     }
+      
     
-    const confirmed = window.confirm("Do you want to delete your Review?");
-    if (confirmed) {
-      ReviewService.deleteReviewById(review.id)
-        .then(() => {
-          console.log("Review deleted");
-          setReview(prevReviews => prevReviews.filter(r => r.id !== review.id));
-        })
-        .catch((error) => {
-          console.error('There was an error deleting the review!', error);
-        });
-    } else {
-      console.log("Review not deleted");
-    }
+    
   };
 
   return (

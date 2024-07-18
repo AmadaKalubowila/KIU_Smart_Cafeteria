@@ -4,29 +4,31 @@ import './review.css';
 import ReviewService from '../OrderService/ReviewService';
 
 function ReviewEdit() {
-  const { userID } = useParams(); 
+  const { reviewID } = useParams(); 
   const navigate = useNavigate(); 
-  const [user, setUser] = useState({});
+  const [review, setReview] = useState({});
   const [comment, setComment] = useState(); 
   const[date,setDate]=useState(new Date().toISOString().split('T')[0],)
  
 
   useEffect(() => {
-    const fetchUserDetails = async () => {
+    const fetchReviewDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/api/v1/user/getUserByUserId/${userID}`);
+        const response = await fetch(`http://localhost:8080/api/reviews/getReviewByReviewID/${reviewID}`);
         if (!response.ok) {
-          throw new Error('Failed to fetch user data');
+          throw new Error('Failed to fetch review data');
         }
-        const userData = await response.json();
-        setUser(userData);
+        const reviewData = await response.json();
+        setReview(reviewData);
+        setComment(reviewData.comment);
+        
       } catch (error) {
-        console.error('Error fetching user data:', error);
+        console.error('Error fetching review data:', error);
       }
     };
 
-    fetchUserDetails();
-  }, [userID]);
+    fetchReviewDetails();
+  }, [reviewID]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -39,19 +41,24 @@ function ReviewEdit() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const reviewData = {
-      email: user.email,
-      userName: user.name,
+      id:reviewID,
+      email:review.email,
+      userName:review.userName,
+      indexNo:review.indexNo,
       comment,
       dates:date
       
     };
       console.log(reviewData);
-    ReviewService.submitReview(reviewData)
+      console.log(reviewID);
+    ReviewService.updateReview(reviewID,reviewData)
       .then(() => {
+       
         navigate('/Reviewuser');
       })
       .catch((error) => {
-        console.error('There was an error submitting the order!', error);
+        
+        console.error('There was an error submitting the review!', error);
       });
   };
   
@@ -70,7 +77,7 @@ function ReviewEdit() {
                 </td>
                 <td>
                   <div className="field_structure_r">
-                    <input type="text" name="email" defaultValue={user.email} readOnly />
+                    <input type="text" name="email" defaultValue={review.email} readOnly />
                   </div>
                 </td>
               </tr>
@@ -80,7 +87,7 @@ function ReviewEdit() {
                 </td>
                 <td>
                   <div className="field_structure_r">
-                    <input style={{ width: '159px', height:'100px' }} type="text" name="comment" onChange={handleChange} />
+                    <input style={{ width: '159px', height:'100px' }} type="text" name="comment"defaultValue={review.comment} onChange={handleChange} />
                   </div>
                 </td>
               </tr>
@@ -89,7 +96,7 @@ function ReviewEdit() {
           </table>
         </form>
       </div>
-      <button  onClick={handleSubmit} className="button1_r" type="submit">
+      <button  onClick={handleSubmit} className="buttonr1" type="submit">
         Submit
       </button>
     </div>

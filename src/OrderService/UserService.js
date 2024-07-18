@@ -9,6 +9,12 @@ class UserService {
     submitUser(userData) {
         return axios.post(`${API_URL}/saveUser`,userData); 
     }
+    updateUser(UID,userData) {
+        return axios.put(`${API_URL}/updateUserByUserID/${UID}`,userData);
+    }
+    deleteUserById(UID) {
+        return axios.delete(`${API_URL}/deleteUserByID/${UID}`);
+    }
 }
 
 export default new UserService();

@@ -3,16 +3,19 @@
     margin-top: 3%;
     height: auto;   
     width:100%; 
-    box-sizing: border-box; /* Ensures padding and border are included in the width and height */
+    box-sizing: border-box;
     padding: 20px;
 }
-.structure2{
+.structuref2{
     width:100%;
-    box-sizing: border-box; 
+   
 
 }
-.list1{
-    margin-left:68%;
+.listf1{
+    margin-left:76%;
+}
+.tf1{
+    width:300px;
 }
 .name1{
     margin-left:40%;

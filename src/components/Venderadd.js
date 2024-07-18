@@ -1,12 +1,94 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './orderpart1.css';
+import VendorService from '../OrderService/VendorService';
 
-export default function () {
+ function Venderadd() {
+  const navigate = useNavigate(); 
+  const [vendor, setVendor] = useState({});
+  const [vname, setVname] = useState(''); 
+  const [email, setEmail] = useState(''); 
+  const [contact, setContact] = useState(''); 
+  const [gender, setGender] = useState(''); 
+  const [nic, setNic] = useState('');
+  const [address, setAddress] = useState('');
+  const [date, setDate] =useState(new Date().toISOString().split('T')[0]);
+  const [noitems, setNoitems] = useState('');
+  const [product, setProduct] = useState('Fried Rice');
+  const [price, setPrice] = useState('');
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    switch (name) {
+      case 'vname':
+        setVname(value);
+        break;
+      case 'email':
+          setEmail(value);
+        
+        break;
+      case 'contact':
+          setContact(value);
+        break;
+      case 'gender':
+          setGender(value);
+
+        break;
+      case 'nic':
+            setNic(value);
+
+        break;
+      case 'address':
+        setAddress(value);
+        break;
+      case 'date':
+        setDate(value);
+        break;
+      case 'noitems':
+        setNoitems(value);
+        break;
+      case 'product':
+        setProduct(value);
+        break;
+      case 'price':
+        setPrice(value);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+        const vendorData = {
+          nic,
+          address,
+          items: product,
+          contactNo: contact,
+          gender,
+          email,
+          vendorName:vname,
+          no_items:noitems,
+          date:date,
+          price
+        };
+        console.log(vendorData)
+        console.log("kl")
+        VendorService.submitVendor(vendorData)
+          .then(() => {
+            navigate('/Vendor');
+          })
+          .catch((error) => {
+            console.error('There was an error submitting the form!', error);
+          });
+      }
+
+
   return (
     <div>
-    <div className="Box1">
+    <div className="Box30">
       <h1 className="heading"> Vendor Registeration</h1>
-      <form >
+      <form onSubmit={handleSubmit}>
         <table className="Structure">
           <tbody>
             <tr>
@@ -15,7 +97,7 @@ export default function () {
               </td>
               <td>
                 <div className="field_structure">
-                  <input type="text" name="id" />
+                  <input type="text" name="vname"  onChange={handleChange}/>
                 </div>
               </td>
             </tr>
@@ -25,7 +107,7 @@ export default function () {
               </td>
               <td>
                 <div className="field_structure">
-                  <input type="text" name="id" />
+                  <input type="text" name="address" onChange={handleChange} />
                 </div>
               </td>
             </tr>
@@ -35,7 +117,7 @@ export default function () {
               </td>
               <td>
                 <div className="field_structure">
-                  <input type="text" name="cname"  />
+                  <input type="text" name="nic"  onChange={handleChange} />
                 </div>
               </td>
             </tr>
@@ -45,7 +127,7 @@ export default function () {
               </td>
               <td>
                 <div className="field_structure">
-                  <input type="text" name="id" />
+                  <input type="text" name="gender" onChange={handleChange} />
                 </div>
               </td>
             </tr>
@@ -55,7 +137,7 @@ export default function () {
               </td>
               <td>
                 <div className="field_structure">
-                  <input type="text" name="id" />
+                  <input type="text" name="email" onChange={handleChange} />
                 </div>
               </td>
             </tr>
@@ -65,7 +147,7 @@ export default function () {
               </td>
               <td>
                 <div className="field_structure">
-                  <input type="text" name="id" />
+                  <input type="text" name="contact"  onChange={handleChange}/>
                 </div>
               </td>
             </tr>
@@ -73,7 +155,11 @@ export default function () {
               <td>
                 <label className="label_structure">Date</label>
               </td>
-              
+              <td>
+              <div className="field_structure">
+                  <input type="date" name="date"  value={date} onChange={handleChange}/>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>
@@ -81,21 +167,54 @@ export default function () {
               </td>
               <td>
                 <div className="field_structure">
-                  <input type="text" name="id" />
+                  <input type="text" name="noitems"  onChange={handleChange} />
                 </div>
               </td>
             </tr>
-            
-            
-              
-            
+            <tr>
+                <td>
+                  <label className="label_structure">Item Name</label>
+                </td>
+                <td>
+                  <div className="field_structure">
+                    <select name="product" value={product} onChange={handleChange}>
+                      <option value="Fried Rice">Fried Rice - Chicken</option>
+                      <option value="Egg Fried Rice">Fried Rice - Egg</option>
+                      <option value="Vegetable Fried Rice">Fried Rice - Vegetable</option>
+                      <option value="Mix Fried Rice">Fried Rice - Mix</option>
+                      <option value="Chicken Rice">Rice & Curry - Chicken</option>
+                      <option value="Vegetable Rice">Rice & Curry - Vegetable</option>
+                      <option value="Fish Rice">Rice & Curry - Fish</option>
+                      <option value="Egg Rice">Rice & Curry - Egg</option>
+                      <option value="Egg Kottu">Kottu - Egg</option>
+                      <option value="Chicken Kottu">Kottu - Chicken</option>
+                      <option value="Vegetable Kottu">Kottu -Vegetable</option>
+                      <option value="Mix Kottu">Kottu - Mix</option>
+                      <option value="Pasta">Other - Pasta</option>
+                      <option value="Noodles">Other - Noodles</option>
+                      <option value="Parata">Other - Parata</option>
+                      <option value="String Hoppers">Other - String Hoppers</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+              <td>
+                <label className="label_structure">Price</label>
+              </td>
+              <td>
+                <div className="field_structure">
+                  <input type="text" name="price"  onChange={handleChange}/>
+                </div>
+              </td>
+            </tr>  
           </tbody>
         </table>
       </form>
     </div>
-    <button   className="button1" type="submit">
+    <button onClick={handleSubmit} className="button1" type="submit">
       Submit
     </button>
   </div>
   )
-}
+}export default Venderadd;

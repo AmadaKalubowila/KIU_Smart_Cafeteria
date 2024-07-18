@@ -107,22 +107,22 @@ function Orderpart2() {
                 <td>
                   <div className="field_structure">
                     <select name="product" defaultValue={orders.itemName} onChange={handleChange}>
-                      <option value="Fried Rice">Chicken Fried Rice</option>
-                      <option value="Egg Fried Rice">Egg Fried Rice</option>
-                      <option value="Vegetable Fried Rice">Vegetable Fried Rice</option>
-                      <option value="Mix Fried Rice">Mix Fried Rice</option>
-                      <option value="Chicken Rice">Chicken Rice</option>
-                      <option value="Vegetable Rice">Vegetable Rice</option>
-                      <option value="Fish Rice">Fish Rice</option>
-                      <option value="Egg Rice">Egg Rice</option>
-                      <option value="Egg Kottu">Egg Kottu</option>
-                      <option value="Chicken Kottu">Chicken Kottu</option>
-                      <option value="Vegetable Kottu">Vegetable Kottu</option>
-                      <option value="Mix Kottu">Mix Kottu</option>
-                      <option value="Pasta">Pasta</option>
-                      <option value="Noodles">Noodles</option>
-                      <option value="Parata">Parata</option>
-                      <option value="String Hoppers">String Hoppers</option>
+                      <option value="Fried Rice">Fried Rice - Chicken</option>
+                      <option value="Egg Fried Rice">Fried Rice - Egg</option>
+                      <option value="Vegetable Fried Rice">Fried Rice - Vegetable</option>
+                      <option value="Mix Fried Rice">Fried Rice - Mix</option>
+                      <option value="Chicken Rice">Rice & Curry -Chicken</option>
+                      <option value="Vegetable Rice">Rice & Curry - Vegetable</option>
+                      <option value="Fish Rice">Rice & Curry - Fish</option>
+                      <option value="Egg Rice">Rice & Curry - Egg</option>
+                      <option value="Egg Kottu">Kottu - Egg</option>
+                      <option value="Chicken Kottu">Kottu - Chicken</option>
+                      <option value="Vegetable Kottu">Kottu - Vegetable</option>
+                      <option value="Mix Kottu">Kottu - Mix</option>
+                      <option value="Pasta">Other - Pasta</option>
+                      <option value="Noodles">Other - Noodles</option>
+                      <option value="Parata">Other - Parata</option>
+                      <option value="String Hoppers">Other - String Hoppers</option>
                     </select>
                   </div>
                 </td>

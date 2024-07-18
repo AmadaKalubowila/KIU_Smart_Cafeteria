@@ -22,9 +22,7 @@ function Useradd() {
     const { name, value } = event.target;
     switch (name) {
       case 'id':
-        if (value.length === 5) {
           setID(value);
-        } 
         break;
       case 'name':
         setName(value);

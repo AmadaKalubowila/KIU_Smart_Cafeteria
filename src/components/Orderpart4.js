@@ -4,13 +4,14 @@ import './orderpart1.css';
 import OrderService from '../OrderService/OrderService';
 
 function Orderpart4() {
-  const { userID } = useParams(); 
-  const navigate = useNavigate(); 
+  const { userID } = useParams();
+  const navigate = useNavigate();
   const [user, setUser] = useState({});
-  const [quantity, setQuantity] = useState(1); 
+  const [quantity, setQuantity] = useState(1);
   const [datetime, setDatetime] = useState(new Date().toISOString().slice(0, 16));
-  const[date,setDate]=useState(new Date().toISOString().split('T')[0],)
-  const [product, setProduct] = useState('Fried Rice'); 
+  const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
+  const [product, setProduct] = useState('Fried Rice');
+  const [isDisabled, setIsDisabled] = useState(false);
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -40,6 +41,12 @@ function Orderpart4() {
       setProduct(value);
     }
   };
+  console.log(userID)
+  const handlesubmission=(event)=>{
+    if(userID=="false"){
+      setIsDisabled(true);
+    }
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -50,7 +57,7 @@ function Orderpart4() {
       itemName: product,
       quantity,
       date: datetime,
-      dates:date,
+      dates: date,
     };
 
     OrderService.submitOrder(orderData)
@@ -61,12 +68,6 @@ function Orderpart4() {
         console.error('There was an error submitting the order!', error);
       });
   };
-  const handleadmin = (event) => {
-    event.preventDefault();
-    
-    
-  };
-
 
   return (
     <div>
@@ -156,9 +157,9 @@ function Orderpart4() {
           </table>
         </form>
       </div>
-      <button  onClick={() => {handleSubmit();handleadmin();}} className="button1" type="submit">
-        Submit
-      </button>
+      <button className="button1" type="submit" onClick={handlesubmission} disabled={isDisabled}>
+            Submit
+          </button>
     </div>
   );
 }

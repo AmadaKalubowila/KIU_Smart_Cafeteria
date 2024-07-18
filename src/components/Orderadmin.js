@@ -8,8 +8,8 @@ export default function Orderadmin() {
     const [isDisabled, setIsDisabled] = useState(false);
 
     const handleClick = () => {
-        const tomorrowState='Yes';
-        navigate(`/onlineorder`);
+        const tomorrowState='false';
+        navigate(`/onlineorder/${tomorrowState}`);
 
        
     };

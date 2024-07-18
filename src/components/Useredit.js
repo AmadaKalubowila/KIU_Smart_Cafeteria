@@ -1,39 +1,49 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import './orderpart1.css';
+import UserService from '../OrderService/UserService';
 
  function Useredit() {
+  const userID = "14633"; 
   const navigate = useNavigate(); 
   const [user, setUser] = useState({});
   const [id, setID] = useState(''); 
   const [name, setName] = useState(''); 
   const [email, setEmail] = useState(''); 
-  const [contact, setContact] = useState(''); 
+  const [contact_no, setContact_no] = useState(''); 
   const [password, setPassword] = useState(''); 
   const [nic, setNic] = useState('');
   const [address, setAddress] = useState('');
-  const [batchNo, setBatchNo] = useState('');
+  const [batch_no, setBatch_no] = useState('');
   const [department, setDepartment] = useState('');
   const [course, setCourse] = useState('');
   const [role, setRole] = useState('');
-  
+
   useEffect(() => {
-    const fetchOrderDetails = async () => {
+    const fetchUserDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/api/order/getOrderByOrderID/${ordersID}`);
+        const response = await fetch(`http://localhost:8080/api/v1/user/getUserByUserId/${userID}`);
         if (!response.ok) {
-          throw new Error('Failed to fetch Order data');
+          throw new Error('Failed to fetch user data');
         }
-        const ordersData = await response.json();
-        setOrders(ordersData);
-        setProduct(ordersData.itemName); 
-        setQuantity(ordersData.quantity);
+        const userData = await response.json();
+        setUser(userData);
+        setName(userData.name);
+        setEmail(userData.email);
+        setContact_no(userData.contact_no);
+        setAddress(userData.address);
+        setBatch_no(userData.batch_no);
+        setDepartment(userData.department);
+        setCourse(userData.course);
+        setRole(userData.role);
       } catch (error) {
-        console.error('Error fetching order data:', error);
+        console.error('Error fetching user data:', error);
       }
     };
 
-    fetchOrderDetails();
-  }, [ordersID]);
+    fetchUserDetails();
+  }, [userID]);
+
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -51,7 +61,7 @@ import './orderpart1.css';
         
         break;
       case 'contact':
-          setContact(value);
+          setContact_no(value);
         break;
       case 'password':
           setPassword(value);
@@ -65,7 +75,7 @@ import './orderpart1.css';
         setAddress(value);
         break;
       case 'batchNo':
-        setBatchNo(value);
+        setBatch_no(value);
         break;
       case 'department':
         setDepartment(value);
@@ -84,33 +94,35 @@ import './orderpart1.css';
   const handleSubmit = (event) => {
     event.preventDefault();
         const userData = {
-          id,
+          u_id:user.u_id,
+          id:user.id,
           course,
-          nic,
+          nic:user.nic,
           address,
-          batch_no: batchNo,
-          contact_no: contact,
+          batch_no,
+          contact_no,
           department,
           email,
           name,
-          password,
+          password:user.password,
           role
         };
-    
-        UserService.submitUser(userData)
-        
-          .then(() => {
-            navigate('/home');
-          })
-          .catch((error) => {
-            console.error('There was an error submitting the form!', error);
-          });
+        const UID =user.u_id
+        console.log(UID)
+        console.log(userData)
+        UserService.updateUser(UID,userData)
+      .then(() => {
+        navigate('/UserProfile');
+      })
+      .catch((error) => {
+        console.error('There was an error updating the user!', error);
+      });
       }
 
   return (
     <div>
     <div className="Box1">
-      <h1 className="heading">Register</h1>
+      <h1 className="heading">Update Your Profile</h1>
       <form >
         <table className="Structure">
           <tbody>
@@ -120,7 +132,7 @@ import './orderpart1.css';
               </td>
               <td>
                 <div className="field_structure">
-                  <input type="text" name="id" />
+                  <input type="text" name="id" defaultValue={user.id} onChange={handleChange} readOnly />
                 </div>
               </td>
             </tr>
@@ -130,7 +142,7 @@ import './orderpart1.css';
               </td>
               <td>
                 <div className="field_structure">
-                  <input type="text" name="id" />
+                  <input type="text" name="nic" defaultValue={user.nic} onChange={handleChange} readOnly/>
                 </div>
               </td>
             </tr>
@@ -140,7 +152,7 @@ import './orderpart1.css';
               </td>
               <td>
                 <div className="field_structure">
-                  <input type="text" name="cname"  />
+                  <input type="text" name="name" defaultValue={user.name} onChange={handleChange}></input>
                 </div>
               </td>
             </tr>
@@ -150,7 +162,7 @@ import './orderpart1.css';
               </td>
               <td>
                 <div className="field_structure">
-                  <input type="text" name="id" />
+                  <input type="text" name="address" defaultValue={user.address} onChange={handleChange}></input>
                 </div>
               </td>
             </tr>
@@ -160,7 +172,7 @@ import './orderpart1.css';
               </td>
               <td>
                 <div className="field_structure">
-                  <input type="text" name="id" />
+                  <input type="text" name="email" defaultValue={user.email} onChange={handleChange}></input>
                 </div>
               </td>
             </tr>
@@ -170,7 +182,7 @@ import './orderpart1.css';
               </td>
               <td>
                 <div className="field_structure">
-                  <input type="text" name="id" />
+                  <input type="text" name="contact_no" defaultValue={user.contact_no} onChange={handleChange}></input>
                 </div>
               </td>
             </tr>
@@ -178,7 +190,11 @@ import './orderpart1.css';
               <td>
                 <label className="label_structure">Batch no</label>
               </td>
-              
+              <td>
+                <div className="field_structure">
+                  <input type="text" name="batch_no" defaultValue={user.batch_no} onChange={handleChange}></input>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>
@@ -186,7 +202,7 @@ import './orderpart1.css';
               </td>
               <td>
                 <div className="field_structure">
-                  <input type="text" name="id" />
+                  <input type="text" name="department" defaultValue={user.department} onChange={handleChange}></input>
                 </div>
               </td>
             </tr>
@@ -196,7 +212,7 @@ import './orderpart1.css';
               </td>
               <td>
                 <div className="field_structure">
-                  <input type="text" name="id" />
+                  <input type="text" name="course" defaultValue= {user.course} onChange={handleChange}></input>
                 </div>
               </td>
             </tr>
@@ -206,17 +222,17 @@ import './orderpart1.css';
               </td>
               <td>
                 <div className="field_structure">
-                  <input type="text" name="id" />
+                  <input type="text" name="role" defaultValue={user.role} onChange={handleChange}></input>
                 </div>
               </td>
             </tr>
             <tr>
               <td>
-                <label className="label_structure">Password</label>
+                <label className="label_structure" >Password</label>
               </td>
               <td>
                 <div className="field_structure">
-                  <input type="text" name="id" />
+                  <input type="password" name="password" defaultValue={user.password} onChange={handleChange} readOnly/>
                 </div>
               </td>
             </tr>
@@ -225,7 +241,7 @@ import './orderpart1.css';
         </table>
       </form>
     </div>
-    <button   className="button1" type="submit">
+    <button onClick={handleSubmit}   className="button1" type="submit">
       Submit
     </button>
   </div>
