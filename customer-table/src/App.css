@@ -1,0 +1,19 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+h2 {
+  text-align: left;
+}
+.App-header {
+  flex: 1;
+}
+
+.App-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
