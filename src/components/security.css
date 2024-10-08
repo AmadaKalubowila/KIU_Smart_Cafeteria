@@ -17,6 +17,11 @@
         padding: 2px;
        
     }
+    .tablemargin1{
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 5%;
+    }
     .bt14{
         
             display: block;
@@ -34,6 +39,12 @@
             text-align: center;
             margin-bottom: 5%;
             
+        }
+        .bt14:hover{
+            background-color : rgb(9, 30, 190); 
+        }
+        .bt14:active{
+            background-color: rgb(69, 165, 42);
         }
         .heading_s1{
             text-align: center;
@@ -76,16 +87,56 @@
             margin-right: 8%;
         }
         #check1{
-            width:300px;
+            width:37%;
             height:80px;
         }
         .btns1{
             color: rgb(255, 255, 255);
             background-color: black;
             width:150px;
-             height: 50px;
+            height: 50px;
             padding: 2px;
             border-radius: 10px;
-            margin-left: 528px;
+            margin-left: 70%;
             margin-top: 6%;
         }
+        @media (min-width: 601px) {
+            .btns1{
+                margin-right: 0;
+                margin-left: 17%;
+                margin-top: 13%;
+               
+             }
+             #check1{
+             width:70%;
+             margin-left: 15%;
+             }
+          }
+          
+          
+          @media (min-width: 992px) {
+            .btns1{
+                margin-left: 65%;
+                margin-top: 5%;
+               
+             }
+          }
+          @media(max-width:600px){
+              
+            .btns1{
+               margin-right: 0;
+               margin-left: 17%;
+               margin-top: 13%;
+              
+            }
+            #check1{
+            width:70%;
+            margin-left: 15%;
+            }
+            .bt14{
+                width:110px;
+                margin-right:3%;
+                margin-left: auto;
+            }
+            
+            }

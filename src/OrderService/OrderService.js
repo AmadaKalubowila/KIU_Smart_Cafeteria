@@ -13,6 +13,10 @@ class OrderService {
         return axios.put(`${API_URL}/updateOrderByOrderID/${ordersID}`, orderingData);
     }
 
+    updateorder(orderid, oderingData) {
+        return axios.put(`${API_URL}/updateOrderByOrderID/${orderid}`,  oderingData);
+    }
+
     deleteOrderById(id) {
         return axios.delete(`${API_URL}/deleteOrderByOrderID/${id}`);
     }

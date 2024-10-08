@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate ,useParams} from 'react-router-dom';
 import './review.css';
 import ReviewService from '../OrderService/ReviewService';
 
 export default function NavigationComponent() {
   const navigate = useNavigate();
-  const userID = 14633; 
+  const {userID}= useParams();
   const [review, setReview] = useState([]);
   
  
@@ -36,7 +36,7 @@ export default function NavigationComponent() {
     
     if (userID == review.indexNo) {  
       const reviewID = review.id
-      navigate(`/Review_edit/${reviewID}`);
+      navigate(`/Review_edit/${userID}/${reviewID}`);
     } else {
       alert("You can only edit your own reviews.");
     }
@@ -50,7 +50,8 @@ export default function NavigationComponent() {
           ReviewService.deleteReviewById(reviewID)
               .then(() => {
                   console.log("Review deleted");
-                  navigate('/Reviewuser'); 
+                  navigate(`/Reviewuser/${userID}`); 
+                  setReview(prevReviews => prevReviews.filter(r => r.id !== reviewID));
               })
               .catch((error) => {
                   console.error('There was an error deleting the review!', error);
@@ -70,7 +71,7 @@ export default function NavigationComponent() {
 
   return (
     <div>
-      <h1 className='heading2_r'>Reviews</h1>
+      <p className='heading2_r'>Reviews</p>
       <button onClick={handleOrderClick5} className="button1_r" type="button">
         Add Review 
       </button>
@@ -78,12 +79,12 @@ export default function NavigationComponent() {
         {review.map((review) => (
           <div className='Box2_r' key={review.id}>
             <h3>Name:</h3> 
-            <h4 className='content1'>{review.userName}</h4>
+            <p className='content1'>{review.userName}</p>
             <h3>Comment:</h3>
-            <h4 className='content2'>{review.comment}</h4>
+            <p className='content2'>{review.comment}</p>
             <p className='set1'>
-              <button className='button3_r' onClick={() => handleEditClick(review)} type="button">Edit</button>
-              <button className='button4_r' onClick={() => handleDeleteClick(review)} type="button">Delete</button>
+              <button className='btn btn-success btn-lg btn-space' onClick={() => handleEditClick(review)} type="button">Edit</button>
+              <button className='btn btn-danger btn-lg ' onClick={() => handleDeleteClick(review)} type="button">Delete</button>
             </p>
           </div>
         ))}

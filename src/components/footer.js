@@ -9,14 +9,15 @@ export default function footer() {
            <table className="structuref2">
             <tr>
                 <td className='tf1'>
-                    <p className="name1">KIU Smart Cafeteria</p>
+                    <p className="name1">KIU CafePlus</p>
                 </td>
                 <td>
                     <ul className="listf1">
-                        <li>07xxxxxxxx</li>
-                        <li>xxxxxx@gmail.com</li>
-                        <li>+9477xxxxxxx</li>
-                        <li>www.xxxxxx</li>
+                        <li className='l2'>076-8071244</li>
+                        <li className='l2'>xxxxxx@gmail.com</li>
+                        <li className='l2'>070-2001168</li>
+                        <li className='l2'>www.xxxxxx</li>
+                        
                     </ul>
                 </td>
             </tr>

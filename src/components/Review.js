@@ -16,11 +16,13 @@ function Review() {
       try {
         const response = await fetch(`http://localhost:8080/api/v1/user/getUserByUserId/${userID}`);
         if (!response.ok) {
+         
           throw new Error('Failed to fetch user data');
         }
         const userData = await response.json();
         setUser(userData);
       } catch (error) {
+       
         console.error('Error fetching user data:', error);
       }
     };
@@ -49,10 +51,12 @@ function Review() {
       
     ReviewService.submitReview(reviewData)
       .then(() => {
-        navigate('/Reviewuser');
+        alert("Successfully submitted the review.");
+        navigate(`/Reviewuser/${userID}`);
       })
       .catch((error) => {
         console.error('There was an error submitting the order!', error);
+        alert("Invalid inputs");
       });
   };
   
@@ -63,31 +67,19 @@ function Review() {
       <div className="Box1_r">
         <h1 className="heading_r">Your Review</h1>
         <form onSubmit={handleSubmit}>
-          <table className="Structure_r">
-            <tbody>
-              <tr>
-                <td>
-                  <label className="label_structure_r">Your Email</label>
-                </td>
-                <td>
-                  <div className="field_structure_r">
-                    <input type="text" name="email" defaultValue={user.email} readOnly />
+          <div className='fo2'>
+            <div className='input-group mb-5'>
+          
+                  <label  className='input-group-text'>Your Email</label>
+               
+                    <input  className='form-control col-sm-6' type="text" name="email" style={{ width: '300px'}} defaultValue={user.email} readOnly />
                   </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label className="label_structure_r" >Comment</label>
-                </td>
-                <td>
-                  <div className="field_structure_r">
-                    <input style={{ width: '159px', height:'100px' }} type="text" name="comment" onChange={handleChange} />
+            <div className='input-group mb-5'>
+                  <label  className='input-group-text' >Comment</label>
+               
+                    <textarea  className='form-control col-sm-6' style={{ width: '300px', height:'100px' }} type="text" name="comment" onChange={handleChange} />
                   </div>
-                </td>
-              </tr>
-              
-            </tbody>
-          </table>
+              </div>
         </form>
       </div>
       <button  onClick={handleSubmit} className="buttonr1" type="submit">

@@ -1,11 +1,10 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/api/products/details'; 
+const API_URL = 'http://localhost:8080/api/v/Item'; 
 
 class ProductService {
-    getProductDetails() {
-        return axios.get(`${API_URL}/details`);
-
+    updateProduct(IID, itemqstock) {
+        return axios.put(`${API_URL}/updateItem/${IID}`, itemqstock);
     }
 }
 

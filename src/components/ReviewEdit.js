@@ -5,6 +5,8 @@ import ReviewService from '../OrderService/ReviewService';
 
 function ReviewEdit() {
   const { reviewID } = useParams(); 
+  const { userID } = useParams(); 
+  
   const navigate = useNavigate(); 
   const [review, setReview] = useState({});
   const [comment, setComment] = useState(); 
@@ -16,6 +18,7 @@ function ReviewEdit() {
       try {
         const response = await fetch(`http://localhost:8080/api/reviews/getReviewByReviewID/${reviewID}`);
         if (!response.ok) {
+         
           throw new Error('Failed to fetch review data');
         }
         const reviewData = await response.json();
@@ -53,12 +56,13 @@ function ReviewEdit() {
       console.log(reviewID);
     ReviewService.updateReview(reviewID,reviewData)
       .then(() => {
-       
-        navigate('/Reviewuser');
+       alert("Successfully editted the review.");
+        navigate(`/Reviewuser/${userID}`);
       })
       .catch((error) => {
         
         console.error('There was an error submitting the review!', error);
+        alert("Invalid inputs");
       });
   };
   
@@ -69,31 +73,19 @@ function ReviewEdit() {
       <div className="Box1_r">
         <h1 className="heading_r">Your Review</h1>
         <form onSubmit={handleSubmit}>
-          <table className="Structure_r">
-            <tbody>
-              <tr>
-                <td>
-                  <label className="label_structure_r">Your Email</label>
-                </td>
-                <td>
-                  <div className="field_structure_r">
-                    <input type="text" name="email" defaultValue={review.email} readOnly />
+          <div  className='fo2'>
+            <div className='input-group mb-5' >
+           
+                  <label className='input-group-text'>Your Email</label>
+                
+                    <input  className='form-control col-sm-6' type="text" name="email" defaultValue={review.email} readOnly />
                   </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label className="label_structure_r" >Comment</label>
-                </td>
-                <td>
-                  <div className="field_structure_r">
-                    <input style={{ width: '159px', height:'100px' }} type="text" name="comment"defaultValue={review.comment} onChange={handleChange} />
+              <div className='input-group mb-5'>
+                  <label className='input-group-text' >Comment</label>
+                
+                    <input   className='form-control col-sm-6' style={{ width: '159px', height:'100px' }} type="text" name="comment"defaultValue={review.comment} onChange={handleChange} />
                   </div>
-                </td>
-              </tr>
-              
-            </tbody>
-          </table>
+             </div>
         </form>
       </div>
       <button  onClick={handleSubmit} className="buttonr1" type="submit">

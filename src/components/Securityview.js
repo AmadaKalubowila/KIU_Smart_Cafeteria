@@ -26,15 +26,15 @@ const navigate = useNavigate();
         fetchUserDetails();
       }, []);
       const handleclick = () => {
-        navigate(`/SecurityView`);
+        navigate(`/Logouts3`);
       };
       return (
         <div>
         <h1 className="heading_s1">Users</h1>
         <button onClick={handleclick} className='bt14'>LogOut</button>
-        <div>
-        <div className="Box_33">
-        <table border="1" className="Tablestructure4">
+        <div className='tablemargin1'>
+        
+        <table  className='table table-bordered table-hover shadow'>
             <thead>
             <tr>
             <th className="th_9">User ID</th>
@@ -44,17 +44,18 @@ const navigate = useNavigate();
             <th className="th_9">Address</th>
             <th className="th_9">Email</th>
             <th className="th_9">Batch </th>
-            <th className="th_9">Contact </th>
-            <th className="th_9">Course</th>
+            <th className="th_9">Contact</th>
+            <th className="th_9">Degree</th>
             <th className="th_9">Department</th>
             <th className="th_9">Role</th>
-            <th className="th_9">Password</th>
+            
             
             </tr>
             </thead>
             <tbody>
             {user.map(user => (
                   <tr key={user.u_id}>
+                    <td>{user.u_id}</td>
                     <td>{user.id}</td>
                     <td>{user.name}</td>
                     <td>{user.nic}</td>
@@ -65,12 +66,12 @@ const navigate = useNavigate();
                     <td>{user.course}</td>
                     <td>{user.department}</td>
                     <td>{user.role}</td>
-                    <td>{user.password}</td>
+                    
                   </tr>
                 ))}
         </tbody>
         </table>
-        </div>
+       
         
     
     

@@ -1,0 +1,188 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+.page{
+    padding: 5px;
+    margin: 10px;
+}
+
+.headerOfLogin{
+    padding: 40px;
+    margin-top: 10px;
+}
+
+h1{
+    text-align: center;
+}
+
+.NoAndPassword{
+    margin-bottom: 30px;
+}
+
+.dataBox{
+    background-color: rgb(215, 215, 215);
+    border: none;
+    width: 300px;
+    border-radius: 5px;
+    margin-right: 2%;
+    padding-left: 10px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin: 10px;
+    
+}
+
+.LoginPageBtn{
+    padding: 10px;
+    margin-left: 10%;
+    height: 30px;
+    display: flex;
+    background-color:black;
+    color: aliceblue;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    width:250px;
+    font-size:large;
+    margin-bottom: 3%;
+}
+.LoginPageBtn:hover{
+    background-color : rgb(9, 30, 190); 
+}
+.LoginPageBtn:active{
+    background-color: rgb(69, 165, 42);
+}
+
+.LogOfOut{
+    position: relative;
+    width: 100%;
+    height: auto;
+   border-style: solid; 
+   border-color: black;
+   border-width: 3%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 5%;
+    margin-left: -85%;
+    margin-top: 20%;
+    color:white;
+    padding: 4% 30%;
+}
+
+
+.ForgotPassword{
+    margin-left: 31%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color:white;
+}
+.ForgotPassword:hover{
+    color : rgb(9, 30, 190); 
+}
+
+
+.RegisterNow{
+   margin-left: 34%;
+    margin-top: 10px;
+    margin-bottom: 80px;
+    color: white;
+
+}
+.RegisterNow:hover{
+    color : rgb(9, 30, 190); 
+}
+
+.headText{
+    font-size: large;
+}
+.headerOfLogin{
+    font-size: 3rem;
+}
+@media (max-width: 1200px) {
+    .LoginPageBtn {
+        width: 200px;
+        font-size: medium;
+    }
+
+    .dataBox {
+        width: 250px;
+    }
+
+    .LogOfOut {
+        margin-left: -75%;
+    }
+
+    .ForgotPassword,
+    .RegisterNow {
+        margin-left: 25%;
+    }
+}
+
+@media (max-width: 900px) {
+    .page {
+        margin: 5px;
+    }
+
+    .headerOfLogin {
+        font-size: 2.5rem;
+        padding: 30px;
+    }
+
+    .LoginPageBtn {
+        width: 180px;
+        font-size: small;
+    }
+
+    .dataBox {
+        width: 220px;
+    }
+
+    .LogOfOut {
+        margin-left: -65%;
+        padding: 3% 20%;
+    }
+
+    .ForgotPassword,
+    .RegisterNow {
+        margin-left: 20%;
+    }
+}
+
+@media (max-width: 600px) {
+    .page {
+        margin: 0;
+        padding: 0;
+    }
+
+    .headerOfLogin {
+        font-size: 2rem;
+        padding: 20px;
+    }
+
+    .LoginPageBtn {
+        width: 150px;
+        font-size: small;
+        margin-left: 5%;
+    }
+
+    .dataBox {
+        width: 100%;
+    }
+
+    .LogOfOut {
+        margin-left: 0;
+        padding: 5% 10%;
+    }
+
+    .ForgotPassword,
+    .RegisterNow {
+        margin-left: 0;
+        text-align: center;
+    }
+}

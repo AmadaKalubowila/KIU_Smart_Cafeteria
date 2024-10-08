@@ -6,7 +6,7 @@ const Nav = () => {
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
             <a className="navbar-brand">
-                KIU Smart Cafeteria
+                KIU CafePlus
             </a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
@@ -24,18 +24,16 @@ const Nav = () => {
                         <Link className="nav-link active" to ={"/Vendor"}>Vendor</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link active" to ={"/ItemTable"}>Item Stock</Link>
+                        <Link className="nav-link active" to ={"/AdminItem"}>Item Stock</Link>
                     </li>
+                   
                     <li className="nav-item">
-                        <Link className="nav-link active" to ={"/"}>Billing</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link active" to ={"/"}>Bill Records</Link>
+                        <Link className="nav-link active" to ={"/Bills"}>Bill Records</Link>
                     </li>
                 </ul>
                 
                 <form className="d-flex" role="search">
-                    <button className="btn btn-outline-success" type="submit"><Link to={"/LogOut"}>LogOut</Link></button>
+                    <Link to="/Logouta2" className="btn btn-dark" type="submit">LogOut</Link>
                 </form>
                     
                 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './orderstockstyle.css';
 import VendorService from '../OrderService/VendorService';
 
@@ -20,7 +20,7 @@ function VendorView() {
             throw new Error('Failed to fetch vendor data');
           }
           const sortedVendor = await response.json();
-          
+          console.log(sortedVendor)
         setVendor(sortedVendor);
         } catch (error) {
           console.error('Error fetching vendor data:', error);
@@ -59,8 +59,8 @@ function VendorView() {
       </button>
     <div>
     <h2 className="heading_2">Details</h2>
-    <div className="Box_31">
-    <table border="1" className="Tablestructure2">
+    <div>
+    <table className='table table-bordered table-hover shadow'>
         <thead>
         <tr>
         <th className="th_4">Vendor Id</th>
@@ -93,7 +93,7 @@ function VendorView() {
                 <td>{vendor.price}</td>
                 <td>{vendor.date}</td>
                 <td><button className='bt2' onClick={() => handleEditClick(vendor.v_id)}>Edit</button></td>
-                <td><button className='bt2'  onClick={() => handleDeleteClick(vendor.v_id)}>Delete</button></td>
+                <td><button className='bt3'  onClick={() => handleDeleteClick(vendor.v_id)}>Delete</button></td>
               </tr>
             ))}
     </tbody>

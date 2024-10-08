@@ -1,23 +1,13 @@
-.Box3{
-    background-color: rgb(254, 161, 198);
-    margin-left: 10%;
-    margin-right: 5%;
-    margin-top: 3%;
-    height: 75%;
-    border-radius:3%;
-    width:80%;
-    height:650px;
-    position:fixed;
-}
 .Box4{
-    background-color: rgb(249, 106, 163);
+    background-color:  #b222225e;
     margin-left: 17%;
     margin-right: 15%;
     margin-top: 10%;
-    height: 50%;
+    height: 400px;
     border-radius:3%;
     width:65%;
-    height:68%;
+    box-shadow: 5px 5px 8px rgba(201, 35, 35, 0.781);
+    
     
 }
 .heading2{
@@ -33,19 +23,18 @@
     height:30%;
 }
 .button2{
-    font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: 100;
     font-size: large;
-    margin-left: 20%;
-    margin-top:10%;
+    margin-bottom: 10%;
+    text-align: center;
     background-color: black;
     color: rgb(251, 251, 251);
     border-color: black;
     font-weight: 5px;
     width:55%;
-    height:150px;
+    height:50px;
     border-radius: 20px;
-    padding:20px;
+   
 }
 
 .button2:hover{
@@ -68,8 +57,16 @@
     height:650px;
     position:fixed;
 }
+.button5:hover{
+    background-color : rgb(9, 30, 190); 
+}
+.button5:active{
+    background-color: rgb(69, 165, 42);
+}
 .Box6{
-    background-color:  hwb(0 50% 50%);
+   border-width: 5px;
+   border-style: solid;
+   border-radius: 30px;
     margin-left: 17%;
     margin-right: 15%;
     margin-top: 10%;
@@ -79,96 +76,174 @@
     height:68%;
     
 }
+.button6:hover{
+    background-color : rgb(9, 30, 190); 
+}
+.button6:active{
+    background-color: rgb(69, 165, 42);
+}
 .button3{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: 100;
     font-size: large;
-    margin-left: 20%;
-    margin-top:10%;
+    margin-left: 40%;
     background-color: rgb(68, 156, 65);
     color: rgb(251, 251, 251);
     border-color: black;
     font-weight: 5px;
-    width:55%;
-    height:150px;
+    width:45%;
+    height:100px;
     border-radius: 20px;
     padding:20px;
+    margin-bottom: 10%;
+}
+.button3:hover{
+    background-color : rgb(9, 30, 190); 
+}
+.button3:active{
+    background-color: rgb(69, 165, 42);
 }
 .button4{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: 100;
     font-size: large;
-    margin-left: 20%;
-    margin-top:10%;
     background-color: rgb(198, 26, 26);
     color: rgb(251, 251, 251);
     border-color: black;
     font-weight: 5px;
-    width:55%;
-    height:150px;
+    width:45%;
+    height:100px;
     border-radius: 20px;
     padding:20px;
+    margin-bottom: 10%;
+}
+.button4:hover{
+    background-color : rgb(9, 30, 190); 
+}
+.button4:active{
+    background-color: rgb(69, 165, 42);
 }
 .button5{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: 100;
     font-size: large;
-   
     background-color: black;
     color: rgb(251, 251, 251);
     border-color: black;
     font-weight: 5px;
-    width:110px;
+    width:120px;
     height:70px;
     border-radius: 20px;
     padding-right:20px;
-    margin-right: 40px;
+    
+    
+    text-align: center;
+    margin-right: 4.5%;
+    margin-left: -25px;
 }
 .button6{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: 100;
     font-size: large;
-   
+    text-align: center;
     background-color: black;
     color: rgb(251, 251, 251);
     border-color: black;
     font-weight: 5px;
-    width:110px;
+    width:120px;
     height:70px;
     border-radius: 20px;
     padding-right:20px;
 }
 .img1{
-    width:300px;
+    width:400px;
     height:500px;
-    margin-left:20%;
-   
-    margin-top: 16%;
+    margin-left: 15%;
+    margin-top: -3%;
+    margin-bottom:-42px ;
+ 
 }
 .t5{
     margin-left: 5%;
     width:90%;
     margin-right: 5%;
-    margin-bottom: 5%;
+    margin-bottom: 20%;
 }
 .i1{
     width:600px;
     height:25px;
 }
 .Box20{
-    background-color: rgb(254, 161, 198);
-    margin-left: 34%;
-    
-    height: 700px;
+    background-color: #c42f2ff5;
+    margin-left: auto;
+    height: auto;
     border-radius:3%;
     width:500px;
+    border-width: 3px;
+    border-style: solid;
+    margin-top: -100px;
+    margin-bottom: 30px;
+    margin-right: auto;
     
     
 }
 .b1{
-    margin-left: 71%;
+    margin-left: 53%; 
+    margin-bottom: 101px;
+    margin-top: 9%;
+    margin-right: 0;
 }
 .hp1{
     margin-left: 5%;
     margin-top: 4%;
+    font-weight: 600;
+    margin-bottom: 5%;
+}
+
+.success1{
+    margin-left: -20%;
+}
+
+.success2{
+    margin-left: -40%;
+}
+
+.success3{
+    margin-left: -60%;
+}
+
+
+@media (max-width: 480px) {
+    .button5 {
+        width: 100px;
+        height: 50px;
+        border-radius: 20px;
+        margin-right: 4.5%;
+      
+    }
+    .button6 {
+        width: 100px;
+        height: 50px;
+        border-radius: 20px;
+       
+      
+    }
+.b1{
+    margin-left: 42%;
+    margin-bottom: -5%;
+    margin-top: 9%;
+}
+    .img1 {
+        max-width: 75%;
+        max-height: 250px;
+        margin-top: -5%;
+        margin-left: 12%;
+    }
+    .Box20{
+        width:80%;
+        height: 70%;
+        margin-left:5%;
+        margin-right: 0;
+        margin-top: 5%;
+    }
 }

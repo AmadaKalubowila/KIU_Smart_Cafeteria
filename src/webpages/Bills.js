@@ -1,14 +1,14 @@
 import React from 'react'
-import AppBillingForm from '../components/BillingForm';
-
+import AppBillrecord from '../components/Billrecord';
+import AppNav from '../components/Nav';
 
 
 
 export default function Bills() {
   return (
     <div>
-      
-        <AppBillingForm ></AppBillingForm>
+      <AppNav></AppNav>
+        <AppBillrecord></AppBillrecord>
        
         
         </div>

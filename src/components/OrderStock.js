@@ -1,27 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './orderstockstyle.css';
+import OrderService from '../OrderService/OrderService';
 
 function OrderStock() {
   const [orders, setOrders] = useState([]);
   const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
-  const [quantities, setQuantities] = useState({
-    friedRiceChicken: 0,
-    friedRiceEgg: 0,
-    friedRiceVegetable: 0,
-    friedRiceMix: 0,
-    pasta: 0,
-    parata: 0,
-    noodles: 0,
-    stringHoppers: 0,
-    riceCurryChicken: 0,
-    riceCurryEgg: 0,
-    riceCurryVegetable: 0,
-    riceCurryMix: 0,
-    kottuChicken: 0,
-    kottuEgg: 0,
-    kottuVegetable: 0,
-    kottuMix: 0,
-  });
+  const [quantities, setQuantities] = useState({});
+  const [orderc, setOrderc] = useState([]);
 
   useEffect(() => {
     const fetchOrderDetails = async () => {
@@ -31,7 +16,8 @@ function OrderStock() {
           throw new Error('Failed to fetch order data');
         }
         const orderData = await response.json();
-        const sortedOrders = orderData.sort((a, b) => a.itemName.localeCompare(b.itemName));
+        const sortedOrders = orderData.sort((a, b) => new Date(b.date) - new Date(a.date));
+        
         setOrders(sortedOrders);
         calculateQuantities(sortedOrders);
       } catch (error) {
@@ -47,79 +33,15 @@ function OrderStock() {
   }, [date, orders]);
 
   const calculateQuantities = (orders) => {
-    const quantities = {
-      friedRiceChicken: 0,
-      friedRiceEgg: 0,
-      friedRiceVegetable: 0,
-      friedRiceMix: 0,
-      pasta: 0,
-      parata: 0,
-      noodles: 0,
-      stringHoppers: 0,
-      riceCurryChicken: 0,
-      riceCurryEgg: 0,
-      riceCurryVegetable: 0,
-      riceCurryMix: 0,
-      kottuChicken: 0,
-      kottuEgg: 0,
-      kottuVegetable: 0,
-      kottuMix: 0,
-    };
+    const quantities = {};
 
     orders.forEach(order => {
       if (date === order.dates) {
-        switch (order.itemName) {
-          case 'Fried Rice':
-            quantities.friedRiceChicken += order.quantity;
-            break;
-          case 'Egg Fried Rice':
-            quantities.friedRiceEgg += order.quantity;
-            break;
-          case 'Vegetable Fried Rice':
-            quantities.friedRiceVegetable += order.quantity;
-            break;
-          case 'Mix Fried Rice':
-            quantities.friedRiceMix += order.quantity;
-            break;
-          case 'Pasta':
-            quantities.pasta += order.quantity;
-            break;
-          case 'Parata':
-            quantities.parata += order.quantity;
-            break;
-          case 'Noodles':
-            quantities.noodles += order.quantity;
-            break;
-          case 'String Hoppers':
-            quantities.stringHoppers += order.quantity;
-            break;
-          case 'Chicken Rice':
-            quantities.riceCurryChicken += order.quantity;
-            break;
-          case 'Egg Rice':
-            quantities.riceCurryEgg += order.quantity;
-            break;
-          case 'Vegetable Rice':
-            quantities.riceCurryVegetable += order.quantity;
-            break;
-          case 'Mix Rice':
-            quantities.riceCurryMix += order.quantity;
-            break;
-          case 'Chicken Kottu':
-            quantities.kottuChicken += order.quantity;
-            break;
-          case 'Egg Kottu':
-            quantities.kottuEgg += order.quantity;
-            break;
-          case 'Vegetable Kottu':
-            quantities.kottuVegetable += order.quantity;
-            break;
-          case 'Mix Kottu':
-            quantities.kottuMix += order.quantity;
-            break;
-          default:
-            break;
+        const itemName = order.itemName;
+        if (!quantities[itemName]) {
+          quantities[itemName] = 0;
         }
+        quantities[itemName] += order.quantity;
       }
     });
 
@@ -129,9 +51,46 @@ function OrderStock() {
   const handleDateChange = (e) => {
     setDate(e.target.value);
   };
+
   const btnClick = (e) => {
-    e.target.innerText="Done";
+    e.target.innerText = "Done";
   };
+
+  const handleSubmitClick = async (orderid, order) => {
+    
+    const oderingData = {
+      id:orderid,
+      indexNo: order.indexNo,
+      customerName: order.customerName,
+      batchNo: order.batchNo,
+      itemName: order.itemName,
+      quantity:order.quantity,
+      date:order.date,
+      dates:order.date,
+      email: order.email,
+      status:1
+    };
+    console.log(oderingData)
+    if (orderid) {
+      try {
+        
+        await OrderService.updateorder(orderid, oderingData)
+        const orderResponse = await fetch(`http://localhost:8080/api/order/getOrderByOrderID/${orderid}`);
+        if (!orderResponse.ok) {
+          throw new Error('Failed to fetch order data');
+        }
+        const updatedOrder = await orderResponse.json();
+      setOrderc(updatedOrder);
+      setOrders(prevOrders => 
+        prevOrders.map(o => o.id === orderid ? updatedOrder : o)
+      );
+      } catch (error) {
+        console.error('Error fetching order data:', error);
+        
+      }
+    };
+  }
+
 
   return (
     <div>
@@ -139,8 +98,8 @@ function OrderStock() {
       <div>
         <h2 className="heading_2">Order History</h2>
         
-        <div className="Box_1">
-          <table border="1" className="Tablestructure">
+        <div>
+          <table className='table table-bordered table-hover shadow'>
             <thead>
               <tr>
                 <th className="th_1">Order Id</th>
@@ -163,7 +122,7 @@ function OrderStock() {
                   <td className='th_3'>{order.batchNo}</td>
                   <td>{order.itemName}</td>
                   <td className='th_3'>{order.quantity}</td>
-                  <td><button id="bt1" onClick={btnClick}>Pending</button></td>
+                  <td><button id="bt1" onClick={() => handleSubmitClick(order.id,order)}>{order.status === 1 ? "Done" : "Pending"}</button></td>
                 </tr>
               ))}
             </tbody>
@@ -173,40 +132,26 @@ function OrderStock() {
           <thead>
             <tr>
               <th><h3 className="heading_3">Full Count</h3></th>
-              <th><h3 className="heading_3">Quantity</h3></th>
+             
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <ul>
-                  <li className="list1">Fried Rice - Chicken: <input className="Input1" value={quantities.friedRiceChicken}  readOnly /></li>
-                  <li className="list1">Fried Rice - Egg: <input className="Input2" value={quantities.friedRiceEgg} readOnly /></li>
-                  <li className="list1">Fried Rice - Vegetable: <input className="Input3" value={quantities.friedRiceVegetable} readOnly /></li>
-                  <li className="list1">Fried Rice - Mix: <input className="Input4" value={quantities.friedRiceMix} readOnly /></li>
-
-                  <li className="list1">Pasta: <input className="Input13" value={quantities.pasta} readOnly /></li>
-                  <li className="list1">Parata: <input className="Input14" value={quantities.parata} readOnly /></li>
-                  <li className="list1">Noodles: <input className="Input15" value={quantities.noodles} readOnly /></li>
-                  <li className="list1">String Hoppers: <input className="Input16" value={quantities.stringHoppers} readOnly /></li>
-
-                  <li className="list1">Rice & Curry - Chicken: <input className="Input5" value={quantities.riceCurryChicken} readOnly /></li>
-                  <li className="list1">Rice & Curry - Egg: <input className="Input6" value={quantities.riceCurryEgg} readOnly /></li>
-                  <li className="list1">Rice & Curry - Vegetable: <input className="Input7" value={quantities.riceCurryVegetable} readOnly /></li>
-                  <li className="list1">Rice & Curry - Mix: <input className="Input8" value={quantities.riceCurryMix} readOnly /></li>
-
-                  <li className="list1">Kottu - Chicken: <input className="Input9" value={quantities.kottuChicken} readOnly /></li>
-                  <li className="list1">Kottu - Egg: <input className="Input10" value={quantities.kottuEgg} readOnly /></li>
-                  <li className="list1">Kottu - Vegetable: <input className="Input11" value={quantities.kottuVegetable} readOnly /></li>
-                  <li className="list1">Kottu - Mix: <input className="Input12" value={quantities.kottuMix} readOnly /></li>
-                </ul>
-              </td>
-            </tr>
+            {Object.entries(quantities).map(([itemName, quantity]) => (
+              <tr key={itemName}>
+                <td>
+                  <ul>
+                    <li className="list1">{itemName}: <input className="Input" value={quantity} readOnly /></li>
+                  </ul>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
+        
       </div>
+     
     </div>
   );
-}
 
+}
 export default OrderStock;

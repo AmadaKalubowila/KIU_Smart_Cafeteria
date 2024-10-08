@@ -12,6 +12,9 @@ class UserService {
     updateUser(UID,userData) {
         return axios.put(`${API_URL}/updateUserByUserID/${UID}`,userData);
     }
+    updateUser(UID,userDataUpdate) {
+        return axios.put(`${API_URL}/updateUserByUserID/${UID}`,userDataUpdate);
+    }
     deleteUserById(UID) {
         return axios.delete(`${API_URL}/deleteUserByID/${UID}`);
     }

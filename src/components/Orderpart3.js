@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './orderpart3.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import OrderService from '../OrderService/OrderService';
 
 export default function Orderpart3() {
    const navigate = useNavigate();
-    const userID = 14633; 
+   const { userID } = useParams();
     const [ordersID, setOrderId] = useState(null); 
     const [isDisabled, setIsDisabled] = useState(false);
 
@@ -34,7 +34,7 @@ export default function Orderpart3() {
         return () => clearTimeout(timer);
     },[]);
     const handleEditClick = () => {
-        navigate(`/edit_onlineorder/${ordersID}`);
+        navigate(`/edit_onlineorder/${userID}/${ordersID}`);
     };
 
     const handleDeleteClick = () => {
@@ -43,7 +43,7 @@ export default function Orderpart3() {
             OrderService.deleteOrderById(ordersID)
                 .then(() => {
                     console.log("Order deleted");
-                    navigate('/Ordersucsses'); 
+                    navigate(`/MainHome/${userID}`); 
                 })
                 .catch((error) => {
                     console.error('There was an error deleting the order!', error);
@@ -54,32 +54,20 @@ export default function Orderpart3() {
     };
 
     const handleDoneClick = () => {
-        
+        navigate(`/Email/${ordersID}/${userID}`)
     };
 
     return (
         <div>
-            <div className="Box3">
+            <div>
                 <div className="Box4">
                     <p className="heading2">You have submitted your Order Successfully!</p>
-                    <table className="tablestructure" >
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <button onClick={handleEditClick} className="button2" type="button" disabled={isDisabled}>Edit<br></br> Order</button>
-                                </td>
-                                <td>
-                                    <button onClick={handleDeleteClick} className="button2" type="button" disabled={isDisabled}>Delete <br></br>Order</button>
-                                </td>
-                                
-                                 <td>
-                                    <button  onClick={handleDoneClick} className="button2" type="button">Done</button>
-                                    </td>   
-                                
-                            </tr>
-                            
-                        </tbody>
-                    </table>
+                    
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                         <button onClick={handleEditClick} class="btn btn-primary" type="button" disabled={isDisabled}>Edit Order</button>
+                         <button onClick={handleDeleteClick} class="btn btn-danger" type="button" disabled={isDisabled}>Delete Order</button>
+                         <button onClick={handleDoneClick} class="btn btn-success" type="button">Done Order</button>
+                    </div>    
                 </div>
             </div>
         </div>

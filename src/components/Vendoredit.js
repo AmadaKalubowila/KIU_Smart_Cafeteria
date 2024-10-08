@@ -17,6 +17,28 @@ function Vendoredit() {
   const [noitems, setNoitems] = useState('');
   const [product, setProduct] = useState('Fried Rice');
   const [price, setPrice] = useState('');
+  const [itemStock, setItemStock] = useState([]);
+  const [selectedItem, setSelectedItem] = useState('');
+
+  useEffect(() => {
+    const fetchItemStock = async () => {
+      try {
+        const response = await fetch(`http://localhost:8080/api/v/Item/getItem`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch items');
+        }
+        const itemStockData = await response.json();
+        setItemStock(itemStockData);
+        if (itemStockData.length > 0) {
+          setSelectedItem(itemStockData[0].name); 
+        }
+      } catch (error) {
+        console.error('Error fetching items:', error);
+      }
+    };
+
+    fetchItemStock();
+  }, []);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -73,7 +95,7 @@ function Vendoredit() {
         setAddress(vendorData.address);
         setDate(vendorData.date);
         setNoitems(vendorData.noItems);
-        setProduct(vendorData.items);
+        setSelectedItem(vendorData.items);
         setPrice(vendorData.price);
       } catch (error) {
         console.error('Error fetching vendor data:', error);
@@ -86,158 +108,102 @@ function Vendoredit() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const vendoringData = {
-      v_id:vendor.v_id,
+      v_id: vendor.v_id,
+      vendorName: vname,
+      email,
+      contactNo: contact,
+      gender:gender,
       nic,
       address,
-      items: product,
-      contactNo: contact,
-      gender,
-      email,
-      vendorName: vname,
-      no_items: noitems,
       date,
+      noItems: noitems,
+      items: selectedItem,
       price
     };
+    console.log(vendoringData)
     VendorService.updateVendor(vendorID, vendoringData)
       .then(() => {
+        alert("Successfully edited the vender");
         navigate('/Vendor');
       })
       .catch((error) => {
         console.error('There was an error submitting the vendor!', error);
+        alert("Invalid inputs");
       });
   };
 
   return (
     <div>
-      <div className="Box30">
+      <div className='col-sm-8 py-2 px-5 offset-2 shadow'>
         <h1 className="heading">Update Vendor Details</h1>
         <form onSubmit={handleSubmit}>
-          <table className="Structure">
-            <tbody>
-              <tr>
-                <td>
-                  <label className="label_structure">Name</label>
-                </td>
-                <td>
-                  <div className="field_structure">
-                    <input type="text" name="vname" value={vname} onChange={handleChange} />
+                  <div className='input-group mb-5'>
+                  <label  className='input-group-text'>Name</label>
+                
+                  <input  className='form-control col-sm-6' type="text" name="vname" value={vname} onChange={handleChange} />
                   </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label className="label_structure">Address</label>
-                </td>
-                <td>
-                  <div className="field_structure">
-                    <input type="text" name="address" value={address} onChange={handleChange} />
+               <div className='input-group mb-5'>
+                  <label  className='input-group-text'>Address</label>
+                    <input  className='form-control col-sm-6' type="text" name="address" value={address} onChange={handleChange} />
                   </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label className="label_structure">NIC</label>
-                </td>
-                <td>
-                  <div className="field_structure">
-                    <input type="text" name="nic" value={nic} onChange={handleChange} />
+                <div className='input-group mb-5'>
+                  <label  className='input-group-text'>NIC</label>
+
+                    <input  className='form-control col-sm-6' type="text" name="nic" value={nic} onChange={handleChange} placeholder='if "V" include put 0 for that'/>
                   </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label className="label_structure">Gender</label>
-                </td>
-                <td>
-                  <div className="field_structure">
-                    <input type="text" name="gender" value={gender} onChange={handleChange} />
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label className="label_structure">Email</label>
-                </td>
-                <td>
-                  <div className="field_structure">
-                    <input type="text" name="email" value={email} onChange={handleChange} />
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label className="label_structure">Contact No</label>
-                </td>
-                <td>
-                  <div className="field_structure">
-                    <input type="text" name="contact" value={contact} onChange={handleChange} />
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label className="label_structure">Date</label>
-                </td>
-                <td>
-                  <div className="field_structure">
-                    <input type="date" name="date" value={date} onChange={handleChange} />
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label className="label_structure">No Of Item</label>
-                </td>
-                <td>
-                  <div className="field_structure">
-                    <input type="text" name="noitems" value={noitems} onChange={handleChange} />
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label className="label_structure">Item Name</label>
-                </td>
-                <td>
-                  <div className="field_structure">
-                    <select name="product" value={product} onChange={handleChange}>
-                      <option value="Fried Rice">Fried Rice - Chicken</option>
-                      <option value="Egg Fried Rice">Fried Rice - Egg</option>
-                      <option value="Vegetable Fried Rice">Fried Rice - Vegetable</option>
-                      <option value="Mix Fried Rice">Fried Rice - Mix</option>
-                      <option value="Chicken Rice">Rice & Curry - Chicken</option>
-                      <option value="Vegetable Rice">Rice & Curry - Vegetable</option>
-                      <option value="Fish Rice">Rice & Curry - Fish</option>
-                      <option value="Egg Rice">Rice & Curry - Egg</option>
-                      <option value="Egg Kottu">Kottu - Egg</option>
-                      <option value="Chicken Kottu">Kottu - Chicken</option>
-                      <option value="Vegetable Kottu">Kottu -Vegetable</option>
-                      <option value="Mix Kottu">Kottu - Mix</option>
-                      <option value="Pasta">Other - Pasta</option>
-                      <option value="Noodles">Other - Noodles</option>
-                      <option value="Parata">Other - Parata</option>
-                      <option value="String Hoppers">Other - String Hoppers</option>
+            <div className='input-group mb-5'>
+                  <label  className='input-group-text'>Gender</label>
+                
+                    <select className='form-control col-sm-6'  type="text"  name="gender" onChange={handleChange} value={gender}  >
+                    <option value="" disabled selected>---Select Your Gender--</option>
+                        <option >Male</option>
+                        <option >Female</option>
+                        <option >Other</option>
+                       
                     </select>
                   </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label className="label_structure">Price</label>
-                </td>
-                <td>
-                  <div className="field_structure">
-                    <input type="text" name="price" value={price} onChange={handleChange} />
+                <div className='input-group mb-5'>
+                  <label  className='input-group-text'>Email</label>
+                
+                    <input  className='form-control col-sm-6' type="text" name="email" value={email} onChange={handleChange} placeholder='@gmail.com'/>
                   </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+              <div className='input-group mb-5'>
+                  <label  className='input-group-text'>Contact No</label>
+              
+                    <input  className='form-control col-sm-6' type="text" name="contact" value={contact} onChange={handleChange} placeholder='only 10 digits' />
+                  </div>
+               <div className='input-group mb-5'>
+                  <label  className='input-group-text'>Date</label>
+              
+                    <input  className='form-control col-sm-6' type="date" name="date" value={date} onChange={handleChange} />
+                  </div>
+               <div className='input-group mb-5'>
+                  <label  className='input-group-text'>No Of Item</label>
+                
+                    <input   className='form-control col-sm-6' type="text" name="noitems" value={noitems} onChange={handleChange} />
+                  </div>
+              <div className='input-group mb-5'>
+                  <label  className='input-group-text'>Item Name</label>
+                
+                    <select  className='form-control col-sm-6' name="product" value={selectedItem} onChange={handleChange}>
+                      {itemStock.map((item) => (
+                        <option key={item.item_id} value={item.name}>
+                          {item.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+              <div className='input-group mb-5'>
+                  <label className='input-group-text'>Price</label>
+              
+                    <input  className='form-control col-sm-6' type="text" name="price" value={price} onChange={handleChange} />
+                  </div>
+            
+          <button className="button1" type="submit">
+            Submit
+          </button>
         </form>
       </div>
-      <button onClick={handleSubmit} className="button1" type="submit">
-        Submit
-      </button>
     </div>
   );
 }
