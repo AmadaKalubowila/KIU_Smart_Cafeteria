@@ -1,0 +1,82 @@
+.welcome1{
+    height: 100%;
+      overflow: hidden;
+      position: relative;
+      background: url('../components/images/49.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      animation: change 15s infinite ease-in-out;
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+      color:white;
+  
+  }
+  .welcome2{
+    margin-left: 5%;
+    margin-top: 4%;
+    font-size: 8rem;
+  }
+  .welcome3{
+    margin-left: 9%;
+    font-size: 3rem;
+    word-wrap:break-word;
+    overflow-wrap:break-word;
+    white-space:normal;
+    width:26%;
+    padding-bottom: 3%;
+  }
+  @media (max-width: 1200px) {
+    .welcome2 {
+        font-size: 6rem;
+        margin-left: 7%;
+    }
+
+    .welcome3 {
+        font-size: 2.5rem;
+        width: 30%;
+        margin-left: 10%;
+    }
+}
+
+@media (max-width: 992px) {
+    .welcome2 {
+        font-size: 5rem;
+        margin-left: 5%;
+    }
+
+    .welcome3 {
+        font-size: 2rem;
+        width: 35%;
+        margin-left: 8%;
+    }
+}
+
+@media (max-width: 768px) {
+    .welcome2 {
+        font-size: 4rem;
+        margin-left: 3%;
+    }
+
+    .welcome3 {
+        font-size: 1.5rem;
+        width: 40%;
+        margin-left: 5%;
+    }
+}
+
+@media (max-width: 576px) {
+    .welcome2 {
+        font-size: 3rem;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .welcome3 {
+        font-size: 1.2rem;
+        width: 80%;
+        margin-left: 0;
+        text-align: center;
+    }
+}

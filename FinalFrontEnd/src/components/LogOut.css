@@ -1,0 +1,120 @@
+*{
+    margin: 0;
+    padding: 0;    
+}
+
+.pageOfLog{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('./images/80.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.LogOfOut2{
+    position: relative;
+    width:400px;
+    height: auto;
+   border-style: solid; 
+   border-color: black;
+   border-width: 3%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 5%;
+    margin-left: -43%;
+    margin-top: 7%;
+    color:white;
+    padding: 5% 10px;
+}
+
+
+.pra{
+    margin-top: 10%;
+    margin-bottom: 40%;
+    font-size: 20px;
+    align-items: center;
+    padding:0% -5%;
+
+}
+
+.LogoutPageBtn{
+    padding: 5px;
+    margin: 5px;
+    width: 100%;
+    height: 30px;
+    display: flex;
+    background-color:black;
+    color: aliceblue;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    
+
+
+}
+.LogoutPageBtn:hover{
+    background-color : rgb(9, 30, 190); 
+}
+
+@media (max-width: 1200px) {
+    .LogOfOut2 {
+        width: 60%;
+        margin-left: -30%;
+        margin-top: 5%;
+        padding: 4% 8px;
+    }
+
+    .pra {
+        margin-top: 5%;
+        margin-bottom: 30%;
+        font-size: 18px;
+    }
+
+    .LogoutPageBtn {
+        height: 28px;
+    }
+}
+
+@media (max-width: 900px) {
+    .LogOfOut2 {
+        width: 70%;
+        margin-left: -20%;
+        margin-top: 3%;
+        padding: 3% 6px;
+    }
+
+    .pra {
+        margin-top: 3%;
+        margin-bottom: 20%;
+        font-size: 16px;
+    }
+
+    .LogoutPageBtn {
+        height: 25px;
+    }
+}
+
+@media (max-width: 600px) {
+    .LogOfOut2 {
+        width: 90%;
+        margin-left: 0;
+        margin-top: 2%;
+        padding: 2% 5px;
+        border-width: 2%;
+    }
+
+    .pra {
+        margin-top: 2%;
+        margin-bottom: 15%;
+        font-size: 14px;
+    }
+
+    .LogoutPageBtn {
+        height: 22px;
+    }
+}

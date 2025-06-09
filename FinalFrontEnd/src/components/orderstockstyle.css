@@ -1,0 +1,237 @@
+.heading_1{
+    text-align: center;
+    font-size: xx-large;
+    font-weight: 700;
+    margin-top: 5%;
+}
+.heading_2{
+    text-align: left;
+    font-size: x-large;
+    font-weight: 600;
+    margin-left: 10%;
+    
+}
+.Tablestructure{
+    width:80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.th_1{
+    width:8%;
+    
+}
+.th_3{
+    text-align: center;
+    
+}
+.th_2{
+    width:8%;
+    text-align: center;
+}
+.th_4{
+    width:15%;
+    padding: 2px;
+   
+}
+.Box_1{
+ background-color: hwb(0 72% 25%);
+  margin:auto;
+  width: 90%;
+  max-width: 1300px;
+  padding: 20px;
+  border-radius: 3%;
+  box-sizing: border-box;
+}
+.heading_3{
+    text-align: left;
+    margin-left: 20%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.list1{
+    margin-left: 25%;
+}
+.Input1{
+    margin-left: 7%;
+    background-color:  hwb(0 72% 25%);
+    text-align: center;
+    
+}
+.Input2{
+    margin-left: 11%;
+    background-color:  hwb(0 72% 25%);
+    text-align: center;
+}
+.Input3{
+    margin-left: 5%;
+    background-color:  hwb(0 72% 25%);
+    text-align: center;
+}
+.Input4{
+    margin-left: 11%;
+    background-color:  hwb(0 72% 25%);
+    text-align: center;
+}
+.Input5{
+    margin-left: 4%;
+    background-color:  hwb(0 72% 25%);
+    text-align: center;
+    
+}
+.Input6{
+    margin-left: 8%;
+    background-color:  hwb(0 72% 25%);
+    text-align: center;
+}
+.Input7{
+    margin-left: 2%;
+    background-color:  hwb(0 72% 25%);
+    text-align: center;
+}
+.Input8{
+    margin-left: 8%;
+    background-color:  hwb(0 72% 25%);
+    text-align: center;
+}
+.Input9{
+    margin-left: 11%;
+    background-color:  hwb(0 72% 25%);
+    text-align: center;
+    
+}
+.Input10{
+    margin-left: 15%;
+    background-color:  hwb(0 72% 25%);
+    text-align: center;
+}
+.Input11{
+    margin-left: 9%;
+    background-color:  hwb(0 72% 25%);
+    text-align: center;
+}
+.Input12{
+    margin-left: 15%;
+    background-color:  hwb(0 72% 25%);
+    text-align: center;
+}
+.Input13{
+    margin-left: 21%;
+    background-color:  hwb(0 72% 25%);
+    text-align: center;
+    
+}
+.Input14{
+    margin-left: 20%;
+    background-color:  hwb(0 72% 25%);
+    text-align: center;
+}
+.Input15{
+    margin-left: 18%;
+    background-color:  hwb(0 72% 25%);
+    text-align: center;
+}
+.Input16{
+    margin-left: 84px;
+    background-color:  hwb(0 72% 25%);
+    text-align: center;
+}#bt1{
+    color: rgb(255, 255, 255);
+    background-color: black;
+    width:150px;
+    height: 50px;
+    padding: 2px;
+    border-radius: 5px;
+    margin-left: 15px;
+
+}
+
+.bt2{
+    color: rgb(255, 255, 255);
+    background-color: black;
+    width:55px;
+    height: 50px;
+    padding: 2px;
+    border-radius: 5px;
+    margin-left: 15px;
+
+}
+.bt2:hover{
+    background-color : rgb(69, 165, 42); 
+}
+.bt2:active{
+    background-color: rgb(69, 165, 42);
+}
+.bt3{
+    color: rgb(255, 255, 255);
+    background-color: black;
+    width:55px;
+    height: 50px;
+    padding: 2px;
+    border-radius: 5px;
+    margin-left: 15px;
+
+}
+.bt3:hover{
+    background-color : rgb(220, 45, 10); 
+}
+.bt3:active{
+    background-color: rgb(69, 165, 42);
+}
+.bt4{
+    color: rgb(255, 255, 255);
+    background-color: black;
+    width:55px;
+    height: 50px;
+    padding: 2px;
+    border-radius: 5px;
+    margin-left: 15px;
+
+}
+.bt4:hover{
+    background-color : rgb(9, 30, 190); 
+}
+.bt4:active{
+    background-color: rgb(69, 165, 42);
+}
+.Tablestructure2{
+    width:100%;
+    margin-left: 1%;
+    margin-right: 10%;
+}
+.Box_31{
+    background-color: hwb(0 72% 25%);
+     margin:auto;
+     width: 95%;
+     max-width: 1300px;
+     padding: 20px;
+     border-radius: 3%;
+     box-sizing: border-box;}
+     @media (min-width: 768px) {
+        .food-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      
+      
+      @media (min-width: 992px) {
+        .food-grid {
+          grid-template-columns: repeat(4, 1fr); 
+        }
+      }
+      @media(max-width:600px){
+          
+        .food-block{
+          margin-bottom: 100px;
+        }
+        .navigation2{
+        margin-right: -2px;
+        }
+        .navigation4{
+          margin-right: -3%;
+          margin-left: 0;
+        }
+        .navigation3{
+          margin-right: -99px;
+         
+        }
+        }

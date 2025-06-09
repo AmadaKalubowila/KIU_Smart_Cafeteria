@@ -1,0 +1,78 @@
+.Box2{
+    background-color:  #800000;
+    margin-top: 3%;
+    height: auto;   
+    width:100%; 
+    box-sizing: border-box;
+    padding: 20px;
+    margin-bottom: 0px;
+}
+.structuref2{
+    width:100%;
+   
+
+}
+.listf1{
+    margin-left:auto;
+    padding-right:150px;
+    margin-right: auto;
+    
+}
+.tf1{
+    width:100%;
+   max-width:300px;
+}
+.name1{
+    margin-left:45%;
+    font-weight: 700;
+    color:white;
+    font-size:x-large;
+    margin:0,auto;
+    
+    margin-right: 20%;
+}
+.l1{
+    color:white;
+    font-size: larger;
+}
+.l2{
+    color:white;
+    font-size: larger;
+}
+.name11{
+    margin:0,auto;
+    font-weight: 500;
+    color:white;
+    font-size:xx-large;
+    margin-right: 50%;
+}
+@media (max-width: 600px) {
+    .list1, .name1,.name11 {
+        margin-left: 0; 
+        margin-right: 0; 
+        text-align: center; 
+    }
+    .tf1 {
+        width: 100%; 
+    }
+    
+    .Box2, .Box21 {
+        padding: 10px; }
+}
+@media (min-width: 601px) {
+    .list1, .name1,.name11 {
+        margin-left: 0; 
+        margin-right: 0; 
+        text-align: center; 
+    }
+}
+.Box21{
+    background: url('../components/images/39.jpg');
+    margin-top: 3%;
+    height: auto;   
+    width:100%; 
+    box-sizing: border-box;
+    padding: 20px;
+    color: aliceblue;
+    background-size: cover;
+}

@@ -1,0 +1,122 @@
+.Structure{
+    width:90%;
+    max-width: 600px;
+    height:auto;
+    padding:20px;
+    margin: 80px auto 0 auto; 
+    box-sizing: border-box;
+    
+   
+}
+
+.label_structure{
+    padding:10px;
+    font-size:large;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 100;
+    margin-right: 50px;
+}
+.p1{
+    background-color: rgb(232, 226, 226);
+}
+.fo1{
+    margin-left:20%;
+    margin-right: 20%;
+}
+.Password1{
+    border-style: solid;
+    border-color: rgb(185, 31, 31);
+    border-width: 4px;
+    margin: 10% auto; 
+    width: 60%; 
+    max-width: 1300px; 
+    padding: 20px; 
+    border-radius: 3%;
+    box-sizing: border-box;
+    padding-bottom: 50px;
+    
+}
+.password2{
+    padding:10px;
+    border-radius: 5px;
+    background-color: rgb(56, 77, 232); 
+}
+.password2:hover{
+    background-color : rgb(30, 155, 30);
+}
+.password2:active{
+    background-color: rgb(69, 165, 42);
+}
+.field_structure{
+    padding:7px;
+    border:6px;
+    width:300px;
+    height:30px;
+    border-radius: 10px;
+    margin-left: 50px;
+}
+.feild_valid1{
+    width:700px;
+}
+.Box1{
+    background-color: #c42f2ff5;
+    margin: 3% auto; 
+    width: 90%; 
+    max-width: 1300px; 
+    padding: 20px; 
+    border-radius: 3%;
+    box-sizing: border-box;
+    
+}
+.heading{
+    text-align: center;
+    padding-top: 4.5%;
+    font-family: 'Times New Roman', Times, serif;
+    padding-bottom: 3%;
+    
+}
+.button1{
+    display: block;
+    margin: 20px auto; 
+    width: 50%;
+    max-width: 350px; 
+    height: auto;
+    padding: 10px;
+    border-radius: 5%;
+    background-color: black;
+    color: azure;
+    border: none;
+    font-weight: bold; 
+    text-align: center;
+}
+.button1:hover{
+    background-color : rgb(9, 30, 190); 
+}
+.button1:active{
+    background-color: rgb(69, 165, 42);
+}
+@media (max-width: 600px) {
+    .Structure {
+        width: 100%; 
+        margin: 20px auto;
+    }
+
+    .Box1 {
+        width: 95%; 
+        margin: 10px auto; 
+    }
+
+    .button1 {
+        width: 70%; 
+    }
+}
+.Box30{
+    background-color:  hwb(0 86% 12%);
+    margin: 3% auto; 
+    width: 90%; 
+    max-width: 1300px; 
+    padding: 20px; 
+    border-radius: 3%;
+    box-sizing: border-box;
+    
+}

@@ -1,0 +1,81 @@
+
+.fo3{
+    margin-left:20%;
+    margin-right: 20%;
+}
+.Boxem2{
+    background-color: #c42f2ff5;
+    margin-left: 17%;
+    margin-right: 15%;
+    margin-top: 9%;
+    height: 50%;
+    border-radius:3%;
+    width:65%;
+    height:auto;
+    
+}
+.Structureem{
+    width:90%;
+    max-width: 600px;
+    height:auto;
+    padding:20px;
+    margin: 80px auto 0 auto; 
+    box-sizing: border-box;
+    
+   
+}
+
+.label_structureem{
+    padding:10px;
+    font-size:large;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 100;
+    margin-right: 50px;
+}
+.field_structureem{
+    padding:7px;
+    border:6px;
+    width:150px;
+    height:30px;
+    border-radius: 10px;
+    margin-left: 50px;
+}
+.Boxemcb1{
+    background-color:hwb(0 72% 25%);
+    margin: 3% auto; 
+    width: 90%; 
+    max-width: 1300px; 
+    padding: 20px; 
+    border-radius: 3%;
+    box-sizing: border-box;
+    
+}
+
+.headingem{
+    text-align: center;
+    padding-top: 4.5%;
+    font-family: 'Times New Roman', Times, serif;
+    padding-bottom: 3%;
+    
+}
+.buttonem{
+    display: block;
+    margin: 20px auto; 
+    width: 50%;
+    max-width: 350px; 
+    height: auto;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: black;
+    color: azure;
+    border: none;
+    font-weight: bold; 
+    text-align: center;
+    margin-bottom: 3%;
+}
+.buttonem:hover{
+    background-color : rgb(9, 30, 190); 
+}
+.buttonem:active{
+    background-color: rgb(69, 165, 42);
+}

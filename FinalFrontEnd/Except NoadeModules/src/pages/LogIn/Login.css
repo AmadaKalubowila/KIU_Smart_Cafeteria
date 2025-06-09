@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+.page{
+    padding: 5px;
+    margin: 10px;
+}
+
+.headerOfLogin{
+    padding: 40px;
+    margin-top: 10px;
+}
+
+h1{
+    text-align: center;
+}
+
+.NoAndPassword{
+    margin-bottom: 30px;
+}
+
+.dataBox{
+    background-color: rgb(215, 215, 215);
+    border: none;
+    width: 300px;
+    border-radius: 5px;
+    margin-right: 2%;
+    padding-left: 10px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin: 10px;
+    
+}
+
+.LoginPageBtn{
+    padding: 10px;
+    margin: 30px;
+    height: 30px;
+    display: flex;
+    background-color: rgb(9, 9, 206);
+    color: aliceblue;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+.ForgotPassword{
+    
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.RegisterNow{
+   
+    margin-top: 10px;
+    margin-bottom: 60px;
+
+}
